@@ -108,7 +108,7 @@ def get_patient(id):
         return jsonify( {'patient' : '' }),204 #if nothing is returned send back an empty patient, with status 204
     return jsonify( {'patient' : foundPatients[0] }) #otherwise send back a JSON object - the 1st of the found patients
 
-#curl -i http://localhost:5000/patients/7KYB7
+#curl -i http://localhost:5000/patients/7
 
 @app.route('/patients', methods=['POST'])
 def create_patient():
@@ -118,18 +118,20 @@ def create_patient():
         abort(400) #check that the request has JSON data (if not returns a 400 error)
     if not 'id' in request.json:
         abort(400)
+
     patient={
         "id":  nextId,
         "firstName": request.json['firstName'],
         "lastName":request.json['lastName'],
         "reasonForVisiting":request.json['reasonForVisiting']
     } #read the request object and create a new patient
+
     patients.append(patient) #append it to the list patient
     nextId += 1
     return jsonify( {'patient':patient }),201 #returns what was just added
 
 # sample test
-# curl -i -H "Content-Type:application/json" -X POST -d "{\"id\":\"11\",\"firstName\":\"Fiona\",\"lastName\":\"OBrien\",\"reasonForVisiting\":\""Obes\"}' http://localhost:5000/patients
+# curl -i -H "Content-Type:application/json" -X POST -d "{\"firstName\":\"Fiona\",\"lastName\":\"OBrien\",\"reasonForVisiting\":\""Obes\"}' http://localhost:5000/patients
 
 #This is a put and it takes in the id from the url
 @app.route('/patients/<string:id>', methods =['PUT'])
