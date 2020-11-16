@@ -151,13 +151,13 @@ def update_patient(id):
     currentPatient = foundPatients[0]
 
     if 'firstName' in request.json:
-    currentPatient['firstName']  = request.json['firstName']
+        currentPatient['firstName']  = request.json['firstName']
 
     if 'lastName' in request.json:
-    currentPatient['lastName'] =request.json['lastName']
+        currentPatient['lastName'] =request.json['lastName']
 
     if reasonForVisiting in request.json:
-    currentPatient['reasonForVisiting'] =request.json['reasonForVisiting']
+        currentPatient['reasonForVisiting'] =request.json['reasonForVisiting']
 
     return jsonify(currentPatient) #returns the updated patient
 
