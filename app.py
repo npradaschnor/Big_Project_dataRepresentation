@@ -79,7 +79,7 @@ patients = [
 nextId = 11
 
 
-@app.route('/')
+@app.route('/home')
 def home():
     pagetitle = "HomePage"
     return render_template(
@@ -94,7 +94,7 @@ def patient_table():
 #returns the list converted in JSON
 @app.route('/patients', methods=['GET'])
 def get_patients():
-    return jsonify( {'patients':patients})
+    return jsonify({'patients':patients})
 # curl -i http://localhost:5000/patients
 
 
