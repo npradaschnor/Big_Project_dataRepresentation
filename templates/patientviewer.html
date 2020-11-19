@@ -276,7 +276,7 @@
         <h2>
             <center><span id="createLabel">Add a new</span> <span id="updateLabel">Update a </span> Patient:</center>
         </h2>
-        <input type="hidden" name="id" />
+        <input type="text" name="id" placeholder="Patient ID" /><br/><br/>
 
         <input type="text" name="firstName" placeholder="First Name" /> <br/><br/>
         <input type="text" name="lastName" placeholder="Last Name" /> <br/><br/>
@@ -326,15 +326,15 @@
         populateFormWithPatient(patient)
     }
 
+
     function doCreate() {
         var form = document.getElementById('createUpdateForm')
 
         var patient = {}
 
-        patient.id = nextId
+        patient.id = form.querySelector('input[name="id"]').value
         patient.firstName = form.querySelector('input[name="firstName"]').value
         patient.lastName = form.querySelector('input[name="lastName"]').value
-        patient.gender = form.querySelector('input[name="gender"]').value
         patient.reasonForVisiting = form.querySelector('input[name="reasonForVisiting"]').value
         console.log(JSON.stringify(patient))
         createPatientAjax(patient)
@@ -371,11 +371,11 @@
         var cell3 = rowElement.insertCell(2);
         cell3.innerHTML = patient.lastName
         var cell4 = rowElement.insertCell(3);
-        cell5.innerHTML = patient.reasonForVisiting
+        cell4.innerHTML = patient.reasonForVisiting
         var cell5 = rowElement.insertCell(4);
-        cell5.innerHTML = '<button type="button" id = "showUpdateButton" onclick="showUpdate(this)"> Update Patient </button>'
+        cell5.innerHTML = '<button type="button" id = "showUpdateButton" onclick="showUpdate(this)"> Update </button>'
         var cell6 = rowElement.insertCell(5);
-        cell6.innerHTML = '<button type="button" id = "doDeleteButton" onclick="doDelete(this)"> Delete Patient </button>'
+        cell6.innerHTML = '<button type="button" id = "doDeleteButton" onclick="doDelete(this)"> Delete </button>'
 
     }
 
@@ -433,7 +433,7 @@
             "dataType": "JSON",
             "success": function(result) {
                 //console.log(result);
-                for (patient of result) {
+                for (patient of result.patients) {
                     addPatientToTable(patient);
                 }
 
@@ -506,14 +506,6 @@
         });
     }
     getAllAjax();
-
-    //function getUniqueID() {
-    //var uniqueID = 10;
-    //var nextId = [];
-    //return nextId = ++uniqueID;
-    };
-
-    //var nextId = getUniqueID();
 </script>
 
 </html>

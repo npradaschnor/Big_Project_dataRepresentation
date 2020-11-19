@@ -3,7 +3,6 @@ from flask import Flask, jsonify,  request, abort, make_response, render_templat
 
 from flask_cors import CORS
 
-import uuid
 
 #Create the Flask app
 app = Flask(__name__,
@@ -76,15 +75,10 @@ patients = [
     }
 ]
 
-nextId = 11
-
-
 @app.route('/home')
 def home():
     pagetitle = "HomePage"
-    return render_template(
-        'home.html',
-        mytitle=pagetitle)
+    return render_template('home.html', mytitle=pagetitle)
 
 @app.route('/patientdata')
 def patient_table():
@@ -112,7 +106,7 @@ def get_patient(id):
 
 @app.route('/patients', methods=['POST'])
 def create_patient():
-    global nextId
+    
 
     if not request.json:
         abort(400) #check that the request has JSON data (if not returns a 400 error)
@@ -120,14 +114,14 @@ def create_patient():
         abort(400)
 
     patient={
-        "id":  nextId,
+        "id":  request.json['id'],
         "firstName": request.json['firstName'],
         "lastName":request.json['lastName'],
         "reasonForVisiting":request.json['reasonForVisiting']
     } #read the request object and create a new patient
 
     patients.append(patient) #append it to the list patient
-    nextId += 1
+    
     return jsonify( {'patient':patient }),201 #returns what was just added
 
 # sample test
