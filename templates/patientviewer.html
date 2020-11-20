@@ -158,116 +158,6 @@
                 </tr>
             </thead>
 
-
-            <tr id="1">
-                <td>1</td>
-                <td>John</td>
-                <td>Ford</td>
-                <td>HTN</td>
-                <td><button id="showUpdateButton" onclick="showUpdate(this)">Update</button></td>
-                <td><button id="doDeleteButton" onclick="doDelete(this)">Delete</button></td>
-
-            </tr>
-
-
-            <tr id="2">
-                <td>2</td>
-                <td>Amy</td>
-                <td>Duffy</td>
-                <td>COPD</td>
-                <td><button id="showUpdateButton" onclick="showUpdate(this)">Update</button></td>
-                <td><button id="doDeleteButton" onclick="doDelete(this)">Delete</button></td>
-
-            </tr>
-
-            <tr id="3">
-                <td>3</td>
-                <td>Andrew</td>
-                <td>Murphy</td>
-                <td>NIIDM</td>
-                <td><button id="showUpdateButton" onclick="showUpdate(this)">Update</button></td>
-                <td><button id="doDeleteButton" onclick="doDelete(this)">Delete</button></td>
-
-
-            </tr>
-
-            <tr id="4">
-                <td>4</td>
-                <td>Frances</td>
-                <td>Walsh</td>
-                <td>CAD</td>
-                <td><button id="showUpdateButton" onclick="showUpdate(this)">Update</button></td>
-                <td><button id="doDeleteButton" onclick="doDelete(this)">Delete</button></td>
-
-            </tr>
-
-            <tr id="5">
-                <td>5</td>
-                <td>Emer</td>
-                <td>Byrne</td>
-                <td>CD</td>
-                <td><button id="showUpdateButton" onclick="showUpdate(this)">Update</button></td>
-                <td><button id="doDeleteButton" onclick="doDelete(this)">Delete</button></td>
-
-
-            </tr>
-
-            <tr id="6">
-                <td>6</td>
-                <td>Orla</td>
-                <td>Kennedy</td>
-                <td>HLD</td>
-                <td><button id="showUpdateButton" onclick="showUpdate(this)">Update</button></td>
-                <td><button id="doDeleteButton" onclick="doDelete(this)">Delete</button></td>
-
-
-            </tr>
-
-            <tr id="7">
-                <td>7</td>
-                <td>David</td>
-                <td>Smith</td>
-                <td>IBD</td>
-                <td><button id="showUpdateButton" onclick="showUpdate(this)">Update</button></td>
-                <td><button id="doDeleteButton" onclick="doDelete(this)">Delete</button></td>
-
-
-            </tr>
-
-            <tr id="8">
-                <td>8</td>
-                <td>Mike</td>
-                <td>Sullivan</td>
-                <td>RA</td>
-                <td><button id="showUpdateButton" onclick="showUpdate(this)">Update</button></td>
-                <td><button id="doDeleteButton" onclick="doDelete(this)">Delete</button></td>
-
-
-            </tr>
-
-
-            <tr id="9">
-                <td>9</td>
-                <td>Aoife</td>
-                <td>Reilly</td>
-                <td>UTI</td>
-                <td><button id="showUpdateButton" onclick="showUpdate(this)">Update</button></td>
-                <td><button id="doDeleteButton" onclick="doDelete(this)">Delete</button></td>
-
-
-            </tr>
-
-            <tr id="10">
-                <td>10</td>
-                <td>Shane</td>
-                <td>Gallagher</td>
-                <td>IBD</td>
-                <td><button id="showUpdateButton" onclick="showUpdate(this)">Update</button></td>
-                <td><button id="doDeleteButton" onclick="doDelete(this)">Delete</button></td>
-
-
-            </tr>
-
         </table>
     </div>
 
@@ -276,8 +166,7 @@
         <h2>
             <center><span id="createLabel">Add a new</span> <span id="updateLabel">Update a </span> Patient:</center>
         </h2>
-        <input type="text" name="id" placeholder="Patient ID" /><br/><br/>
-
+        <input type="hidden" name="id" />
         <input type="text" name="firstName" placeholder="First Name" /> <br/><br/>
         <input type="text" name="lastName" placeholder="Last Name" /> <br/><br/>
         <input type="text" name="reasonForVisiting" placeholder="Reason for Visiting | Medical Abbreviation" /> <br/><br/>
@@ -332,12 +221,23 @@
 
         var patient = {}
 
-        patient.id = form.querySelector('input[name="id"]').value
-        patient.firstName = form.querySelector('input[name="firstName"]').value
-        patient.lastName = form.querySelector('input[name="lastName"]').value
-        patient.reasonForVisiting = form.querySelector('input[name="reasonForVisiting"]').value
-        console.log(JSON.stringify(patient))
-        createPatientAjax(patient)
+        if (document.getElementById("firstName").value == "") {
+            alert("First Name not provided");
+        } else if (document.getElementById("lastName").value == "") {
+
+            alert("Last Name not provided");
+
+        } else if (document.getElementById("reasonForVisiting").value == "") {
+
+            alert("Reason for visiting not provided");
+
+        } else {
+            patient.firstName = form.querySelector('input[name="firstName"]').value
+            patient.lastName = form.querySelector('input[name="lastName"]').value
+            patient.reasonForVisiting = form.querySelector('input[name="reasonForVisiting"]').value
+            console.log(JSON.stringify(patient))
+            createPatientAjax(patient)
+        }
 
 
     }
@@ -433,7 +333,7 @@
             "dataType": "JSON",
             "success": function(result) {
                 //console.log(result);
-                for (patient of result.patients) {
+                for (patient of result) {
                     addPatientToTable(patient);
                 }
 
