@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <title>Patient Database | Login</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <style>
+        #login-button {
+            width: 16%;
+            padding: 7px;
+            border: none;
+            border-radius: 5px;
+            color: rgb(84, 57, 240);
+            font-weight: bold;
+            background-color: #f7efef;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        #login-form {
+            align-self: flex-start;
+            display: grid;
+            justify-items: center;
+            align-items: center;
+        }
+        
+        .login-form-field::placeholder {
+            color: #3a3a3a;
+        }
+        
+        .login-form-field {
+            border: none;
+            border-bottom: 1px solid #3a3a3a;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            outline: none;
+            padding: 0px 0px 5px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <br/><br/>
+        <h1 class="text-center">Login</h1>
+        <br/><br/>
+
+
+
+        <form action="" method="post" id='login-form'>
+            <input type="text" class='login-form-field' placeholder="Username" name="username" value="{{
+          request.form.username }}">
+            <input type="password" class='login-form-field' placeholder="Password" name="password" value="{{
+          request.form.password }}">
+            <input class="btn btn-primary" type="submit" id="login-button" value="Login">
+        </form>
+
+    </div>
+</body>
+
+
+<script>
+    const loginForm = document.getElementById("login-form");
+    const loginButton = document.getElementById("login-button");
+    const loginErrorMsg = "Invalid credentials";
+
+    loginButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        const username = loginForm.username.value;
+        const password = loginForm.password.value;
+
+        if (username === "AndrewBeatty1" && password === "datarep") {
+            alert("Welcome Andrew!");
+            window.location = "home.html";
+        } else {
+            alert("Invalid credentials");
+
+        }
+    })
+</script>
+
+</html>
