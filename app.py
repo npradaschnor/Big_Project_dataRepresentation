@@ -2,21 +2,12 @@
 from flask import Flask, url_for, jsonify, session, request, abort, make_response, render_template, redirect
 from PatientDao import patientDao
 
-#from flask_cors import CORS
-
-
 #Create the Flask app
 app = Flask(__name__,
             static_url_path='',
             static_folder='templates')
 
 app.secret_key = 'k9WydtaAVn9E2HmHy0T3VvcRHJzdDZQp'
-
-#CORS(app)
-
-#url map for /patients for method GET
-#returns the list converted in JSON
-
 
 @app.route('/')
 def home():
@@ -28,15 +19,6 @@ def home():
 
 
 @app.route('/login', methods=['GET', 'POST'])
-#def login():
-#    error = None
-#   if request.method == 'POST':
-#        if request.form['username'] != 'AndrewBeatty1' or request.form['password'] != 'datarep':
-#            error = 'Invalid Credentials.'
-#        else:
-#            return redirect(url_for('home'))
-#    return render_template('login.html', error=error)
-#@app.route('/login')
 def login():
     return '<br/><h1 style="font-family:verdana"><b> LOGIN </b></h1><br/> '+\
     '<button style="font-family:verdana, text-decoration:none">'+\
@@ -95,12 +77,6 @@ def getAll():
 #curl "http://127.0.0.1:5000/patients"
 # curl -i "http://localhost:5000/patients"
 
-
-
-
-#To find the ID by passing the info to the function as a String called 'id'
-# filter searches through the list patients and returns only the ones that matches the id variable. lambda goes through each element of the list
-
 @app.route('/patients/<id>')
 
 def findById(id):
@@ -127,7 +103,10 @@ def create():
 
     return jsonify(patientDao.create(patient))
 
-# curl -i -H "Content-Type:application/json" -X POST -d "{\"id\":\"W9146A\",\"firstName\":\"Fiona\",\"lastName\":\"OBrien\",\"reasonForVisiting\":\""OBES\"}' http://127.0.0.1:5000/patients
+# curl -i -H "Content-Type:application/json" -X POST -d '{"id":"W9146A","firstName":"Fiona","lastName":"OBrien","reasonForVisiting":"OBES"}' http://127.0.0.1:5000/patients
+
+#Windows:
+# curl -i -H "Content-Type:application/json" -X POST -d "{\"id\":\"W9146A\",\"firstName\":\"Fiona\",\"lastName\":\"OBrien\",\"reasonForVisiting\":\""OBES\"}" http://127.0.0.1:5000/patients
 
 #This is a put and it takes in the id from the url
 @app.route('/patients/<id>', methods =['PUT'])
