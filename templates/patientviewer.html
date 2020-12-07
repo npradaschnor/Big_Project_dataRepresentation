@@ -56,7 +56,10 @@
             clear: both;
         }
         
-        #showCreateButton {
+        #getStarted {}
+        /* Button to create new patient */
+        
+        #showCreate-button {
             font-family: "Raleway", sans-serif;
             font-weight: 500;
             font-size: 20px;
@@ -69,10 +72,16 @@
             background: #1977cc;
         }
         
-        #showCreateButton:hover {
+        #showCreate-button:hover {
             background: #063a68;
             text-decoration: none;
         }
+        /* Button clicked after the new patient info was input */
+        
+        #create-button {}
+        /* Form showed when the showCreate-button or update button is clicked */
+        
+        #createUpdateForm {}
         
         #patientTable {
             border-collapse: collapse;
@@ -135,7 +144,7 @@
     </div>
 
 
-    <!-- Create and Update Form -->
+    <!----------------- Create and Update Form ------------------------------------------>
 
     <div id="create-update" style="display:none">
 
@@ -169,6 +178,8 @@
     </div>
     <div id="display">
 
+        <!----------------- Patient Table ------------------------------------------>
+
         <button id="showCreate-button" onClick="showCreate()">Create</button>
         <table id="patientTable" class="table">
             <tr>
@@ -196,7 +207,6 @@
         document.getElementById('create-update').style.display = "block"
 
     }
-
 
     function showUpdate(thisElem) {
         var rowElement = thisElem.parentNode.parentNode;

@@ -24,6 +24,7 @@ class PatientDao:
         ]
         cursor.execute(sql, values)
         self.db.commit()
+        cursor.close()
         return cursor.lastrowid
 
     def getAll(self):
@@ -37,6 +38,7 @@ class PatientDao:
             resultAsDict = self.convertToDict(result)
             returnArray.append(resultAsDict)
 
+        cursor.close()
         return returnArray
 
     def findById(self, id):
@@ -45,6 +47,7 @@ class PatientDao:
         values = [id]
         cursor.execute(sql, values)
         result = cursor.fetchone()
+        cursor.close()
         return self.convertToDict(result)
 
     def update(self, patient):
@@ -56,6 +59,7 @@ class PatientDao:
         ]
         cursor.execute(sql, values)
         self.db.commit()
+        cursor.close()
         return patient
 
     def delete(self, id):
@@ -65,6 +69,7 @@ class PatientDao:
         cursor.execute(sql, values)
 
         #self.db.commit()
+        cursor.close()
         return {}
 
     def convertToDict(self, result):
