@@ -24,7 +24,7 @@
 | templates/[patientviewer.html](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/templates/patientviewer.html)  |   HTML that uses AJAX to link to the server and provide a user interface                               |
 | requirements.txt              |   List of necessary packages                                                                           |
 
-#### My web server is hosted on [PythonAnywhere](http://npradaschnor.pythonanywhere.com/)
+#### :mega:  My web server is hosted on :computer: [PythonAnywhere](http://npradaschnor.pythonanywhere.com/)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -41,36 +41,36 @@
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Instructions on how to run the project:
+### :ballot_box_with_check: **Instructions on how to run the project**
 
-#### **Step 1.** 
+#### :arrow_forward: **Step 1.** 
 #### Clone the repository to your machine using the following HTTPS:
-- https://github.com/npradaschnor/Big_Project_dataRepresentation.git
+:link: <https://github.com/npradaschnor/Big_Project_dataRepresentation.git>
 
-#### **Step 2.**
+#### :arrow_forward: **Step 2.**
 #### Open a virtual environment within the project folder of the repository.
 
-#### **Step 3.**
+#### :arrow_forward: **Step 3.**
 #### Check the requirements.txt file and install all the packages needed using the command:
 - pip install -r path/to/requirements.txt
 
-#### **Step 4.** 
+#### :arrow_forward: **Step 4.** 
 #### Start mysql server. I've used [WAMPSERVER](https://www.wampserver.com/en/)
 
-#### **Step 5.** 
+#### :arrow_forward: **Step 5.** 
 #### To create the database, the table and to insert the data into the table use the command code of the following files:
 - initdb.sql
 
-#### **Step 6.** 
+#### :arrow_forward: **Step 6.** 
 #### Run the Flask server named app.py
 
-#### **Step 7.** 
-#### Type <http://127.0.0.1:5000/> into your browser.
+#### :arrow_forward: **Step 7.** 
+#### Type :link: <http://127.0.0.1:5000/> into your browser.
 
-#### **Step 8.** 
+#### :arrow_forward: **Step 8.** 
 #### Also check the following webpages:
-- <http://127.0.0.1:5000/patients>
-- <http://127.0.0.1:5000/patientdata>
+:link: <http://127.0.0.1:5000/patients>
+:link: <http://127.0.0.1:5000/patientdata>
 
-#### **Step 9.**
+#### :arrow_forward: **Step 9.**
 #### Perform CRUD (Create, Read, Update and Delete) operations on the patients table.
