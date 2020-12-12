@@ -15,13 +15,13 @@
 
 |    File                       |      Description                                                                                       | 
 |:------------------------------|:-------------------------------------------------------------------------------------------------------|
-| initdb.sql                    |   SQL code to create the database, create the table and populate the table                             |
-| dbconfig.py                   |   Configuration file for DAO                                                                           |
+| [initdb.sql](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/initdb.sql)                    |   SQL code to create the database, create the table and populate the table                             |
+| [dbconfig.py](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/dbconfig.py)                   |   Configuration file for DAO                                                                           |
 | dbconfigtemplate.py           |   Configuration file template for DAO                                                                  |
-| PatientDao.py                 |   DAO Pattern - CRUD operations                                                                        |
-| app.py                        |   Flask server that implements a REST API that performs CRUD operations and authorization(logging in)  |
-| templates/home.html           |   HTML for home page                                                                                   |
-| templates/patientviewer.html  |   HTML that uses AJAX to link to the server and provide a user interface                               |
+| [PatientDao.py](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/PatientDao.py)                 |   DAO Pattern - CRUD operations                                                                        |
+| [app.py](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/app.py)                        |   Flask server that implements a REST API that performs CRUD operations and authorization(logging in)  |
+| templates/[home.html](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/templates/home.html)           |   HTML for home page                                                                                   |
+| templates/[patientviewer.html](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/templates/patientviewer.html)  |   HTML that uses AJAX to link to the server and provide a user interface                               |
 | requirements.txt              |   List of necessary packages                                                                           |
 
 #### My web server is hosted on [PythonAnywhere](http://npradaschnor.pythonanywhere.com/)
