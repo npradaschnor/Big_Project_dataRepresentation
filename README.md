@@ -69,7 +69,7 @@
 
 #### :arrow_forward: **Step 8.** 
 #### Also check the following webpages:
-:link: <http://127.0.0.1:5000/patients>
+:link: <http://127.0.0.1:5000/patients> <br/>
 :link: <http://127.0.0.1:5000/patientdata>
 
 #### :arrow_forward: **Step 9.**
