@@ -12,7 +12,8 @@ class PatientDao:
         self.db = mysql.connector.connect(host=cfg.mysql['host'],
                                           user=cfg.mysql['user'],
                                           password=cfg.mysql['password'],
-                                          database=cfg.mysql['database'])
+                                          database=cfg.mysql['database'],
+                                          port='3306')
         #print ("connection made")
 
     def create(self, patient):

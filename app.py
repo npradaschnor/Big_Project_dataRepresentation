@@ -34,7 +34,7 @@ def proccess_login():
 
     #else
     session['username'] = "Andrew"
-    return redirect(url_for('home'))
+    return redirect(url_for('homepage'))
 
 
 @app.route('/logout')
@@ -44,7 +44,6 @@ def logout():
 
 
 @app.route('/home')
-
 def homepage():
     pagetitle = "HomePage"
 

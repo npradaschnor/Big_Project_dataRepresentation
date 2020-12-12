@@ -44,7 +44,7 @@
 ### Instructions on how to run the project:
 
 #### **Step 1.** 
-##### Clone the repository to your machine using the following HTTPS:
+#### Clone the repository to your machine using the following HTTPS:
 - https://github.com/npradaschnor/Big_Project_dataRepresentation.git
 
 #### **Step 2.**
