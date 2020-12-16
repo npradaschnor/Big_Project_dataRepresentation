@@ -72,5 +72,14 @@
 :link: <http://127.0.0.1:5000/patients> <br/>
 :link: <http://127.0.0.1:5000/patientdata>
 
+| Route                 | Result                        |
+:-----------------------|:------------------------------|
+|/                      |Redirects to /login route      |
+|/login                 |Login page                     |
+|/home                  |Renders home template          |
+| /patients             |Retrieves patients records     |
+| /patients/<id>        |Retrieves patient's record     |
+|/patientdata           |Renders patientviewer template |
+
 #### :arrow_forward: **Step 9.**
 #### Perform CRUD (Create, Read, Update and Delete) operations on the patients table.
