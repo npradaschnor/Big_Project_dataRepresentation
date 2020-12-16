@@ -1,6 +1,6 @@
 #!flask/bin/python
 from flask import Flask, url_for, jsonify, session, request, abort, make_response, render_template, redirect
-from PatientDao import patientDao
+from PatientDao import patientDao 
 
 #Create the Flask app
 app = Flask(__name__,
@@ -9,6 +9,7 @@ app = Flask(__name__,
 
 app.secret_key = 'k9WydtaAVn9E2HmHy0T3VvcRHJzdDZQp'
 
+#Need to login to access the homepage and patientdata
 @app.route('/')
 def home():
     if not 'username' in session:
@@ -42,7 +43,7 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('home'))
 
-
+#/home route renders home template
 @app.route('/home')
 def homepage():
     pagetitle = "HomePage"
@@ -53,6 +54,7 @@ def homepage():
     return render_template('home.html', mytitle=pagetitle)
 
 
+# /patiendata route renders patientviewer template
 @app.route('/patientdata')
 
 def patientData():
@@ -62,7 +64,7 @@ def patientData():
 
     return render_template('patientviewer.html')
 
-
+# /patients get all the patients records in JSON
 @app.route('/patients')
 
 def getAll():
@@ -76,6 +78,7 @@ def getAll():
 #curl "http://127.0.0.1:5000/patients"
 # curl -i "http://localhost:5000/patients"
 
+# /patient/<id> get the record of a specific patient (by id)
 @app.route('/patients/<id>')
 
 def findById(id):

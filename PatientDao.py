@@ -16,6 +16,7 @@ class PatientDao:
                                           port='3306')
         #print ("connection made")
 
+#Add new patient to patients table (datarepresentation database on mysql)
     def create(self, patient):
         cursor = self.db.cursor()
         sql = "insert into patients (id,firstName, lastName, reasonForVisiting) values (%s,%s,%s,%s)"
@@ -28,6 +29,7 @@ class PatientDao:
         cursor.close()
         return cursor.lastrowid
 
+#Get all the patients records from the patients table
     def getAll(self):
         cursor = self.db.cursor()
         sql = 'select * from patients'
@@ -42,6 +44,7 @@ class PatientDao:
         cursor.close()
         return returnArray
 
+#Find a specific patient's record by id
     def findById(self, id):
         cursor = self.db.cursor()
         sql = 'select * from patients where id = %s'
@@ -51,6 +54,7 @@ class PatientDao:
         cursor.close()
         return self.convertToDict(result)
 
+#Update a patient's record
     def update(self, patient):
         cursor = self.db.cursor()
         sql = "update patients set firstName = %s, lastName = %s, reasonForVisiting = %s where id = %s"
@@ -63,6 +67,7 @@ class PatientDao:
         cursor.close()
         return patient
 
+#Delete a patient's record from patients table
     def delete(self, id):
         cursor = self.db.cursor()
         sql = 'delete from patients where id = %s'
@@ -73,6 +78,7 @@ class PatientDao:
         cursor.close()
         return {}
 
+#Convert a list to dictionary
     def convertToDict(self, result):
         colnames = ['id', 'firstName', 'lastName', 'reasonForVisiting']
         patient = {}

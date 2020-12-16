@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+
+    <!---------------------------CSS---------------------------------------------->
     <style>
         h1 {
             color: #170aa8;
@@ -108,6 +110,7 @@
             background: #063a68;
             text-decoration: none;
         }
+        /* Button clicked after the patient info was input - to update patient's record */
         
         #update-button {
             font-family: "Raleway", sans-serif;
@@ -131,6 +134,7 @@
             margin-left: 30px;
             font-family: "Raleway", sans-serif;
         }
+        /* Table that shows the record of all patients */
         
         #patientTable {
             border-collapse: collapse;
@@ -160,6 +164,7 @@
             background-color: #091e64;
             color: white;
         }
+        /* Button 'update' that is in the patientTable */
         
         #showUpdateButton {
             color: black;
@@ -175,6 +180,7 @@
             border-radius: 12px;
             transition: 0.5s;
         }
+        /* Button 'delete' that is in the patientTable */
         
         #doDeleteButton {
             border-radius: 12px;
@@ -253,7 +259,7 @@
 
 </body>
 
-
+<!----------------------Functions-------------------------------------------------->
 <script>
     function showCreate() {
         document.getElementById('display').style.display = "none"
