@@ -1,7 +1,6 @@
 #!flask/bin/python
 from flask import Flask, url_for, jsonify, session, request, abort, make_response, render_template, redirect
 from PatientDao import patientDao
-from PatientDetailsDao import patientDetailsDao
 
 #Create the Flask app
 app = Flask(__name__,
@@ -84,8 +83,6 @@ def findById(id):
         abort(401)
 
     return jsonify(patientDao.findById(id))
-    return jsonify(patientDetailsDao.findById(id))
-
 
 #curl "http://127.0.0.1:5000/patients/F4386D"
 
@@ -103,10 +100,9 @@ def create():
         "reasonForVisiting":request.json["reasonForVisiting"]
     } #read the request object and create a new patient
 
-    patient1 = patientDao.create(patient)
-    patient2 = patientDetailsDao.create(patient)
-
-    return jsonify(patient1, patient2)
+    patientAdd = patientDao.create(patient)
+    
+    return jsonify(patientAdd)
 
 # curl -i -H "Content-Type:application/json" -X POST -d '{"id":"W9146A","firstName":"Fiona","lastName":"OBrien","reasonForVisiting":"OBES"}' http://127.0.0.1:5000/patients
 
