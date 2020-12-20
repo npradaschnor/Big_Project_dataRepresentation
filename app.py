@@ -1,6 +1,12 @@
 #!flask/bin/python
-from flask import Flask, url_for, jsonify, session, request, abort, make_response, render_template, redirect
+from flask import Flask, url_for, jsonify, session, request, abort, make_response, render_template, redirect, flash
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
+import mysql.connector
+from mysql.connector import cursor
+import dbconfig as cfg
 from PatientDao import patientDao 
+from DoctorDao import doctorDao
 
 #Create the Flask app
 app = Flask(__name__,
@@ -9,43 +15,49 @@ app = Flask(__name__,
 
 app.secret_key = 'k9WydtaAVn9E2HmHy0T3VvcRHJzdDZQp'
 
-#Need to login to access the homepage and patientdata
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_DB'] = 'datarepresentation'
+
+mysql = MySQL(app)
+
+#Need to login
 @app.route('/')
-def home():
+def root():
     if not 'username' in session:
         return redirect(url_for('login'))
 
-    return 'Welcome, ' + session['username'] +\
-        '<br><a href="'+url_for('logout')+'">Logout</a>'
-
-
+#####################Login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    return '<br/><h1 style="font-family:verdana"><b> LOGIN </b></h1><br/> '+\
-    '<button style="font-family:verdana, text-decoration:none">'+\
-    '<a href="'+url_for('proccess_login')+'">' +\
-    'Login' +\
-    '</a>' +\
-    '</button>'
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+        username = request.form['username']
+        cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cur.execute("SELECT username,password FROM users WHERE username=%s", [username])
+        user = cur.fetchone()
+        if user:
+            # Create session data, we can access this data in other routes
+            session['loggedin'] = True
+            session['username'] = user['username']
+            return render_template('home.html', username=username)
+        
+        else:
+            flash('Invalid Username or Password !!')
+            return render_template('login.html')
+    else:
+        return render_template('login.html')
 
-@app.route('/processlogin')
-def proccess_login():
-    #check credentials
-    #if bad redirect to login page again
-
-    #else
-    session['username'] = "Andrew"
-    return redirect(url_for('homepage'))
-
-
+######################### Logout
 @app.route('/logout')
 def logout():
-    session.pop('username', None)
-    return redirect(url_for('home'))
+    session.clear()
+    return render_template('login.html')
+
 
 #/home route renders home template
 @app.route('/home')
-def homepage():
+def home():
     pagetitle = "HomePage"
 
     if not 'username' in session:
@@ -53,8 +65,9 @@ def homepage():
 
     return render_template('home.html', mytitle=pagetitle)
 
+######################### Patients table
 
-# /patiendata route renders patientviewer template
+# /patientdata route renders patientviewer template
 @app.route('/patientdata')
 
 def patientData():
@@ -63,6 +76,8 @@ def patientData():
         return redirect(url_for('login'))
 
     return render_template('patientviewer.html')
+    
+    
 
 # /patients get all the patients records in JSON
 @app.route('/patients')
@@ -110,7 +125,7 @@ def create():
 # curl -i -H "Content-Type:application/json" -X POST -d '{"id":"W9146A","firstName":"Fiona","lastName":"OBrien","reasonForVisiting":"OBES"}' http://127.0.0.1:5000/patients
 
 #Windows:
-# curl -i -H "Content-Type:application/json" -X POST -d "{\"id\":\"W9146A\",\"firstName\":\"Fiona\",\"lastName\":\"OBrien\",\"reasonForVisiting\":\""OBES\"}" http://127.0.0.1:5000/patients
+# curl -i -H "Content-Type:application/json" -X POST -d "{\"id\":\"W9146A\",\"firstName\":\"Fiona\",\"lastName\":\"OBrien\",\"reasonForVisiting\":\"OBES\"}" http://127.0.0.1:5000/patients
 
 #This is a put and it takes in the id from the url
 @app.route('/patients/<id>', methods =['PUT'])
@@ -151,6 +166,108 @@ def update(id):
 def delete(id):
     patientDao.delete(id)
     return  jsonify( {'Done':True })
+
+################### Doctors table
+
+# /doctordata route renders doctorviewer template
+@app.route('/doctordata')
+def doctorData():
+
+    if not 'username' in session:
+        return redirect(url_for('login'))
+
+    return render_template('doctorviewer.html')
+
+# /patients get all the doctors records in JSON
+
+
+@app.route('/doctors')
+def getAllDoc():
+
+    if not 'username' in session:
+        abort(401)
+
+    return jsonify(doctorDao.getAllDoc())
+    #return jsonify({'doctors':doctors})
+
+#curl "http://127.0.0.1:5000/doctors"
+# curl -i "http://localhost:5000/doctors"
+
+# /patient/<id> get the record of a specific doctor (by registration number - reg_no)
+
+
+@app.route('/doctors/<reg_no>')
+def findByReg(reg_no):
+    if not 'username' in session:
+        abort(401)
+
+    return jsonify(doctorDao.findByReg(reg_no))
+
+#curl "http://127.0.0.1:5000/doctors/18524"
+
+
+@app.route('/doctors', methods=['POST'])
+def createDoc():
+
+    if not request.json:
+        abort(400)  # check that the request has JSON data (if not returns a 400 error)
+
+    doctor = {
+        "reg_no": request.json["reg_no"],
+        "firstName": request.json["firstName"],
+        "lastName": request.json["lastName"],
+        "specialty": request.json["specialty"]
+    }  # read the request object and create a new doctor
+
+    doctorAdd = doctorDao.createDoc(doctor)
+
+    return jsonify(doctorAdd)
+
+# curl -i -H "Content-Type:application/json" -X POST -d '{"reg_no":"18524","firstName":"Gavin","lastName":"Blake","specialty":"Cardiology"}' http://127.0.0.1:5000/doctors
+
+#Windows:
+# curl -i -H "Content-Type:application/json" -X POST -d "{\"reg_no\":\"18524\",\"firstName\":\"Gavin\",\"lastName\":\"Blake\",\"specialty\":\"Cardiology\"}" http://127.0.0.1:5000/doctors
+
+#This is a put and it takes in the id from the url
+
+
+@app.route('/doctors/<reg_no>', methods=['PUT'])
+def updateDoc(reg_no):
+    foundDoctor = doctorDao.findByReg(reg_no)
+
+    #print (foundDoctor)
+
+    if foundDoctor == {}:
+        return jsonify({}), 404
+
+    if not request.json:
+        abort(400)
+
+    currentDoctor = foundDoctor
+
+    if 'reg_no' in request.json:
+        currentDoctor['reg_no'] = request.json['reg_no']
+    if 'firstName' in request.json:
+        currentDoctor['firstName'] = request.json['firstName']
+    if 'lastName' in request.json:
+        currentDoctor['lastName'] = request.json['lastName']
+    if 'specialty' in request.json:
+        currentDoctor['specialty'] = request.json['specialty']
+
+    doctorDao.updateDoc(currentDoctor)
+
+    return jsonify(currentDoctor)
+
+#curl -i -H "Content-Type:application/json" -X PUT -d '{"lastName":"Healy"}' http://127.0.0.1:5000/doctors/18524
+
+#Windows:
+#curl -i -H "Content-Type:application/json" -X PUT -d "{\"lastName\":\"Healy\"}" http://127.0.0.1:5000/doctors/18524
+
+
+@app.route('/doctors/<reg_no>', methods=['DELETE'])
+def deleteDoc(reg_no):
+    doctorDao.deleteDoc(reg_no)
+    return jsonify({'Done': True})
 
 #Run Flask
 if __name__ == '__main__' :
