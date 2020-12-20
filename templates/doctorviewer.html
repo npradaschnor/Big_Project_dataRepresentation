@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8" http-equiv="refresh" content="60" />
     <!--Auto refresh every 60 seconds-->
-    <title>Patient Database</title>
-
+    <title>Doctor Database</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -85,7 +84,30 @@
             transform: translate(-50%, -50%);
             color: rgb(247, 243, 243);
         }
-        /* Button to create new patient */
+        /*Button that redirects to Patientss Database*/
+        
+        #patientsDB-button {
+            font-family: "Raleway", sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            letter-spacing: 1px;
+            padding: 10px 30px;
+            transition: 0.5s;
+            color: #fff;
+            background: #5b85fa;
+            display: inline-block;
+            margin-top: 20px;
+            margin-left: 815px;
+            border-radius: 15px;
+            border-color: #12069c;
+        }
+        
+        #patientsDB-button:hover {
+            background: #063a68;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* Button to create new doctor */
         
         #showCreate-button {
             font-family: "Raleway", sans-serif;
@@ -104,32 +126,8 @@
         #showCreate-button:hover {
             background: #063a68;
             text-decoration: none;
-            cursor: pointer;
         }
-        /*Button that redirects to Doctors Database*/
-        
-        #doctorsDB-button {
-            font-family: "Raleway", sans-serif;
-            font-weight: 500;
-            font-size: 18px;
-            letter-spacing: 1px;
-            padding: 10px 30px;
-            transition: 0.5s;
-            color: #fff;
-            background: #5b85fa;
-            display: inline-block;
-            margin-top: 20px;
-            margin-left: 815px;
-            border-radius: 15px;
-            border-color: #12069c;
-        }
-        
-        #doctorsDB-button:hover {
-            background: #063a68;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        /* Button clicked after the new patient info was input */
+        /* Button clicked after the new doctor info was input */
         
         #create-button {
             font-family: "Raleway", sans-serif;
@@ -146,7 +144,7 @@
             background: #063a68;
             text-decoration: none;
         }
-        /* Button clicked after the patient info was input - to update patient's record */
+        /* Button clicked after the doctor info was input - to update doctor's record */
         
         #update-button {
             font-family: "Raleway", sans-serif;
@@ -170,37 +168,37 @@
             margin-left: 30px;
             font-family: "Raleway", sans-serif;
         }
-        /* Table that shows the record of all patients */
+        /* Table that shows the record of all doctors */
         
-        #patientTable {
+        #doctorTable {
             border-collapse: collapse;
             width: 90%;
             margin-left: 35px;
             margin-right: 35px;
         }
         
-        #patientTable td,
-        #patientTable th {
+        #doctorTable td,
+        #doctorTable th {
             border: 1px solid #ddd;
             padding: 8px;
         }
         
-        #patientTable tr:nth-child(even) {
+        #doctorTable tr:nth-child(even) {
             background-color: #f2f2f2;
         }
         
-        #patientTable tr:hover {
+        #doctorTable tr:hover {
             background-color: #ddd;
         }
         
-        #patientTable th {
+        #doctorTable th {
             padding-top: 12px;
             padding-bottom: 12px;
             text-align: left;
             background-color: #091e64;
             color: white;
         }
-        /* Button 'update' that is in the patientTable */
+        /* Button 'update' that is in the dcotorTable */
         
         #showUpdateButton {
             color: black;
@@ -216,7 +214,7 @@
             border-radius: 12px;
             transition: 0.5s;
         }
-        /* Button 'delete' that is in the patientTable */
+        /* Button 'delete' that is in the doctorTable */
         
         #doDeleteButton {
             border-radius: 12px;
@@ -232,7 +230,6 @@
 
 
 <body>
-
     <!-----------------------------------Logout button----------------------------------------->
 
     <div id="logout-button">
@@ -240,9 +237,10 @@
     </div>
 
     <!--------------------------Header----------------------------------------------------->
+
     <div class="header-image">
         <div class="header-text">
-            <h1>Patient Database</h1>
+            <h1>Doctor Database</h1>
             <p>Health Data</p>
         </div>
     </div>
@@ -251,49 +249,49 @@
 
     <div id="create-update" style="display:none">
 
-        <h2><span id="createLabel">&nbsp;&nbsp; Add </span> <span id="updateLabel">&nbsp;&nbsp; Update</span> Patient </h2><br/>
+        <h2><span id="createLabel">&nbsp;&nbsp; Add </span> <span id="updateLabel">&nbsp;&nbsp; Update</span> Doctor </h2><br/>
 
         <table id="createUpdateForm">
             <tr>
-                <td>Patient ID</td>
-                <td><input type="text" name="id" id="idInput" placeholder="L1234A"></td>
+                <td>Registration Number</td>
+                <td><input type="text" name="reg_no" id="idInput" placeholder="19528"></td>
             </tr>
             <tr>
                 <td>First Name</td>
-                <td><input type="text" name="firstName" placeholder="Joe"></td>
+                <td><input type="text" name="firstName" placeholder="Amy"></td>
             </tr>
             <tr>
                 <td>Last Name</td>
-                <td><input type="text" name="lastName" placeholder="Duffy"></td>
+                <td><input type="text" name="lastName" placeholder="Healy"></td>
             </tr>
             <tr>
-                <td>Reason for Visiting</td>
-                <td><input type="text" name="reasonForVisiting" placeholder="Medical Abbreviation"></td>
+                <td>Specialty</td>
+                <td><input type="text" name="specialty" placeholder="Cardiology"></td>
             </tr>
             <tr>
                 <td></td>
                 <td>
                     <br/>
                     <button id="create-button" onclick="doCreate()">Add</button>
-                    <button id="update-button" onclick="doUpdate()">Update</button><br/>
-                    <a href="/patientdata" class="previous">&laquo; Back to Database</a>
+                    <button id="update-button" onclick="doUpdate()">Update</button> <br/>
+                    <a href="/doctordata" class="previous">&laquo; Back to Database</a>
                 </td>
             </tr>
         </table>
     </div>
     <div id="display">
 
-        <!----------------- Patient Table ------------------------------------------>
+        <!----------------- Doctor Table ------------------------------------------>
 
-        <button id="showCreate-button" onClick="showCreate()">Add patient</button>
-        <input type="button" id="doctorsDB-button" onclick="location.href='/doctordata';" value="Doctors Database" />
+        <button id="showCreate-button" onClick="showCreate()">Add doctor</button>
+        <input type="button" id="patientsDB-button" onclick="location.href='/patientdata';" value="Patients Database" />
         <br/><br/>
-        <table id="patientTable" class="table">
+        <table id="doctorTable" class="table">
             <tr>
-                <th>Patient ID</th>
+                <th>Registration Number</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Reason for Visiting</th>
+                <th>Specialty</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -319,8 +317,8 @@
 
     function showUpdate(thisElem) {
         var rowElement = thisElem.parentNode.parentNode;
-        patient = readPatientFromRow(rowElement)
-        populateForm(patient)
+        doctor = readDoctorFromRow(rowElement)
+        populateForm(doctor)
 
         document.getElementById('display').style.display = "none"
         document.getElementById('update-button').style.display = "block"
@@ -331,71 +329,71 @@
     }
 
 
-    function readPatientFromRow(rowElement) {
-        patient = {}
-        patient.id = rowElement.getAttribute("id");
-        patient.firstName = rowElement.cells[1].firstChild.textContent
-        patient.lastName = rowElement.cells[2].firstChild.textContent
-        patient.reasonForVisiting = rowElement.cells[3].firstChild.textContent
+    function readDoctorFromRow(rowElement) {
+        doctor = {}
+        doctor.reg_no = rowElement.getAttribute("reg_no");
+        doctor.firstName = rowElement.cells[1].firstChild.textContent
+        doctor.lastName = rowElement.cells[2].firstChild.textContent
+        doctor.specialty = rowElement.cells[3].firstChild.textContent
 
-        return patient
+        return doctor
 
     }
 
     function doCreate() {
         var form = document.getElementById('createUpdateForm')
 
-        var patient = {}
+        var doctor = {}
 
-        patient.id = form.querySelector('input[name="id"]').value
-        patient.firstName = form.querySelector('input[name="firstName"]').value
-        patient.lastName = form.querySelector('input[name="lastName"]').value
-        patient.reasonForVisiting = form.querySelector('input[name="reasonForVisiting"]').value
-        createPatientAjax(patient)
+        doctor.reg_no = form.querySelector('input[name="reg_no"]').value
+        doctor.firstName = form.querySelector('input[name="firstName"]').value
+        doctor.lastName = form.querySelector('input[name="lastName"]').value
+        doctor.specialty = form.querySelector('input[name="specialty"]').value
+        createDoctorAjax(doctor)
 
 
     }
 
-    function populateForm(patient) {
+    function populateForm(doctor) {
         var form = document.getElementById('createUpdateForm')
 
 
-        form.querySelector('input[name="id"]').value = patient.id
-        form.querySelector('input[name="id"]').disabled = true
+        form.querySelector('input[name="reg_no"]').value = doctor.reg_no
+        form.querySelector('input[name="reg_no"]').disabled = true
 
-        form.querySelector('input[name="firstName"]').value = patient.firstName
-        form.querySelector('input[name="lastName"]').value = patient.lastName
-        form.querySelector('input[name="reasonForVisiting"]').value = patient.reasonForVisiting
+        form.querySelector('input[name="firstName"]').value = doctor.firstName
+        form.querySelector('input[name="lastName"]').value = doctor.lastName
+        form.querySelector('input[name="specialty"]').value = doctor.specialty
     }
 
     function clearForm() {
         var form = document.getElementById('createUpdateForm')
 
 
-        form.querySelector('input[name="id"]').value = ''
-        form.querySelector('input[name="id"]').disabled = false
+        form.querySelector('input[name="reg_no"]').value = ''
+        form.querySelector('input[name="reg_no"]').disabled = false
 
         form.querySelector('input[name="firstName"]').value = ''
         form.querySelector('input[name="lastName"]').value = ''
-        form.querySelector('input[name="reasonForVisiting"]').value = ''
+        form.querySelector('input[name="specialty"]').value = ''
     }
 
     host = window.location.origin
 
-    function createPatientAjax(patient) {
-        console.log(JSON.stringify(patient));
+    function createDoctorAjax(doctor) {
+        console.log(JSON.stringify(doctor));
 
         $.ajax({
-            //"url": "http://127.0.0.1:5000/patients",
-            "url": host + "/patients",
+            //"url": "http://127.0.0.1:5000/doctors",
+            "url": host + "/doctors",
             "method": "POST",
-            "data": JSON.stringify(patient),
+            "data": JSON.stringify(doctor),
             "dataType": "JSON",
             contentType: "application/json; charset=utf-8",
             "success": function(result) {
                 //console.log(result);
-                patient.id = result.id
-                addPatientToTable(patient)
+                doctor.reg_no = result.reg_no
+                addDoctorToTable(doctor)
                 showDisplay()
                 clearForm()
 
@@ -408,22 +406,22 @@
     }
 
     function doUpdate() {
-        patient = getPatientFromForm()
-        updateServer(patient)
+        doctor = getDoctorFromForm()
+        updateServer(doctor)
 
     }
 
-    function updateServer(patient) {
+    function updateServer(doctor) {
         $.ajax({
-            //"url": "/patients/" + patient.id,
-            "url": host + "/patients/" + patient.id,
-            "data": JSON.stringify(patient),
+            //"url": "/doctors/" + doctor.reg_no,
+            "url": host + "/doctors/" + doctor.reg_no,
+            "data": JSON.stringify(doctor),
             "method": "PUT",
             "dataType": "JSON",
             contentType: "application/json; charset=utf-8",
             "success": function(result) {
                 console.log(result)
-                updateTableRow(patient)
+                updateTableRow(doctor)
                 showDisplay()
                 clearForm()
 
@@ -435,13 +433,13 @@
     }
 
     function doDelete(thisElem) {
-        var tableElement = document.getElementById('patientTable');
+        var tableElement = document.getElementById('doctorTable');
         var rowElement = thisElem.parentNode.parentNode;
         var index = rowElement.rowIndex;
-        id = rowElement.getAttribute("id");
+        reg_no = rowElement.getAttribute("reg_no");
 
         $.ajax({
-            "url": host + "/patients/" + id,
+            "url": host + "/doctors/" + reg_no,
             "method": "DELETE",
             "dateType": "JSON",
             "success": function(result) {
@@ -454,24 +452,24 @@
 
     }
 
-    function updateTableRow(patient) {
-        rowElement = document.getElementById(patient.id)
-        rowElement.cells[1].firstChild.textContent = patient.firstName
-        rowElement.cells[2].firstChild.textContent = patient.lastName
-        rowElement.cells[3].firstChild.textContent = patient.reasonForVisiting
+    function updateTableRow(doctor) {
+        rowElement = document.getElementById(doctor.reg_no)
+        rowElement.cells[1].firstChild.textContent = doctor.firstName
+        rowElement.cells[2].firstChild.textContent = doctor.lastName
+        rowElement.cells[3].firstChild.textContent = doctor.specialty
         console.log("updating table")
     }
 
-    function getPatientFromForm() {
+    function getDoctorFromForm() {
         var form = document.getElementById('createUpdateForm')
 
-        var patient = {}
-        patient.id = form.querySelector('input[name="id"]').value
-        patient.firstName = form.querySelector('input[name="firstName"]').value
-        patient.lastName = form.querySelector('input[name="lastName"]').value
-        patient.reasonForVisiting = form.querySelector('input[name="reasonForVisiting"]').value
-            //console.log(patient)
-        return patient
+        var doctor = {}
+        doctor.reg_no = form.querySelector('input[name="reg_no"]').value
+        doctor.firstName = form.querySelector('input[name="firstName"]').value
+        doctor.lastName = form.querySelector('input[name="lastName"]').value
+        doctor.specialty = form.querySelector('input[name="specialty"]').value
+            //console.log(doctor)
+        return doctor
     }
 
     function showDisplay() {
@@ -484,13 +482,13 @@
         //ajax getAll
 
         $.ajax({
-            //"url": 'http://127.0.0.1:5000/patients',
-            "url": host + '/patients',
+            //"url": 'http://127.0.0.1:5000/doctors',
+            "url": host + '/doctors',
             "method": 'GET',
             "datatype": 'JSON',
             "success": function(results) {
-                for (patient of results) {
-                    addPatientToTable(patient)
+                for (doctor of results) {
+                    addDoctorToTable(doctor)
                 }
             },
             "error": function(xhr, status, error) {
@@ -501,20 +499,20 @@
 
     }
 
-    function addPatientToTable(patient) {
-        console.log("Adding Patient to Table")
+    function addDoctorToTable(doctor) {
+        console.log("Adding Doctor to Table")
 
-        var tableElem = document.getElementById("patientTable")
+        var tableElem = document.getElementById("doctorTable")
         var rowElem = tableElem.insertRow(-1)
-        rowElem.setAttribute("id", patient.id)
+        rowElem.setAttribute("reg_no", doctor.reg_no)
         var cell1 = rowElem.insertCell(0)
-        cell1.innerHTML = patient.id
+        cell1.innerHTML = doctor.reg_no
         var cell2 = rowElem.insertCell(1)
-        cell2.innerHTML = patient.firstName
+        cell2.innerHTML = doctor.firstName
         var cell3 = rowElem.insertCell(2)
-        cell3.innerHTML = patient.lastName
+        cell3.innerHTML = doctor.lastName
         var cell4 = rowElem.insertCell(3)
-        cell4.innerHTML = patient.reasonForVisiting
+        cell4.innerHTML = doctor.specialty
         var cell5 = rowElem.insertCell(4)
         cell5.innerHTML = '<button onclick="showUpdate(this)" id="showUpdateButton">Update</button>'
         var cell6 = rowElem.insertCell(5)

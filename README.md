@@ -15,13 +15,16 @@
 
 |    File                       |      Description                                                                                       | 
 |:------------------------------|:-------------------------------------------------------------------------------------------------------|
-| [initdb.sql](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/initdb.sql)                    |   SQL code to create the database, create the table and populate the table                             |
+| [initdb.sql](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/initdb.sql)                    |   SQL code to create the database, create the tables and populate the tables                             |
 | [dbconfig.py](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/dbconfig.py)                   |   Configuration file for DAO                                                                           |
 | dbconfigtemplate.py           |   Configuration file template for DAO                                                                  |
-| [PatientDao.py](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/PatientDao.py)                 |   DAO Pattern - CRUD operations                                                                        |
+| [PatientDao.py](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/PatientDao.py)                 |   DAO Pattern - CRUD operations for patients database                                                                       |
+| [DoctorDao.py](xxxxxxxxxxxxxx)                 |   DAO Pattern - CRUD operations for doctors database                                                                       |
 | [app.py](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/app.py)                        |   Flask server that implements a REST API that performs CRUD operations and authorization(logging in)  |
 | templates/[home.html](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/templates/home.html)           |   HTML for home page                                                                                   |
-| templates/[patientviewer.html](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/templates/patientviewer.html)  |   HTML that uses AJAX to link to the server and provide a user interface                               |
+| templates/[patientviewer.html](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/templates/patientviewer.html)  |   HTML that uses AJAX to link to the server and provide a user interface for patients database                              |
+| templates/[doctorviewer.html](xxxxxxxxxxxxxxxxx)           |   HTML that uses AJAX to link to the server and provide a user interface for doctors database                                                                                   |
+| templates/[login.html](xxxxxxxxxxxxxxxxxxxxxxx)  |   HTML that contains login form  |
 | requirements.txt              |   List of necessary packages                                                                           |
 
 #### :mega:  My web server is hosted on :computer: [PythonAnywhere](http://npradaschnor.pythonanywhere.com/)
@@ -31,6 +34,7 @@
 ### To run the code check if you have already installed:
 - [mysql-connector-python](https://pypi.org/project/mysql-connector-python/)
 - [Flask](https://flask.palletsprojects.com/en/master/installation/)
+- [Flask-MySQLdb](https://flask-mysqldb.readthedocs.io/en/latest/)
 - [Python 3.6.3](https://www.python.org/downloads/release/python-363/)
 
 #### Also check the [requirements.txt] (xxxxxx) to see the libraries used and their version.
@@ -58,7 +62,7 @@
 #### Start mysql server. I've used [WAMPSERVER](https://www.wampserver.com/en/)
 
 #### :arrow_forward: **Step 5.** 
-#### To create the database, the table and to insert the data into the table use the command code of the following files:
+#### To create the database, the tables (patients, doctors, users) and to insert data into the tables use the command code of the following file:
 - initdb.sql
 
 #### :arrow_forward: **Step 6.** 
@@ -68,7 +72,7 @@
 #### Type :link: <http://127.0.0.1:5000/> into your browser.
 
 #### :arrow_forward: **Step 8.** 
-#### Also check the following webpages:
+#### Also check the following routes:
 :link: <http://127.0.0.1:5000/patients> <br/>
 :link: <http://127.0.0.1:5000/patientdata>
 
@@ -77,9 +81,13 @@
 |/                      |Redirects to /login route      |
 |/login                 |Login page                     |
 |/home                  |Renders home template          |
-| /patients             |Retrieves patients records     |
-| /patients/<id>        |Retrieves patient's record     |
+|/patients              |Retrieves patients records     |
+|/patients/<id>         |Retrieves patient's record     |
 |/patientdata           |Renders patientviewer template |
+|/doctordata            |Renders doctorviewer template  |
+|/doctors               |Retrieves doctors data         |
+|/doctors/<reg_no>      |Retrieves doctor's data        |
+
 
 #### :arrow_forward: **Step 9.**
 #### Perform CRUD (Create, Read, Update and Delete) operations on the patients table.
