@@ -9,9 +9,9 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-### This folder contains the final project for the Data Representation and Querying Module.
+##### This folder contains the final project for the Data Representation and Querying Module.
 
-### The project contains the following files:
+#### The project contains the following files:
 
 |    File                       |      Description                                                                                       | 
 |:------------------------------|:-------------------------------------------------------------------------------------------------------|
@@ -19,15 +19,24 @@
 | [dbconfig.py](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/dbconfig.py)                   |   Configuration file for DAO                                                                           |
 | dbconfigtemplate.py           |   Configuration file template for DAO                                                                  |
 | [PatientDao.py](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/PatientDao.py)                 |   DAO Pattern - CRUD operations for patients database                                                                       |
-| [DoctorDao.py](xxxxxxxxxxxxxx)                 |   DAO Pattern - CRUD operations for doctors database                                                                       |
+| [DoctorDao.py](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/DoctorDao.py)                 |   DAO Pattern - CRUD operations for doctors database                                                                       |
 | [app.py](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/app.py)                        |   Flask server that implements a REST API that performs CRUD operations and authorization(logging in)  |
 | templates/[home.html](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/templates/home.html)           |   HTML for home page                                                                                   |
 | templates/[patientviewer.html](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/templates/patientviewer.html)  |   HTML that uses AJAX to link to the server and provide a user interface for patients database                              |
-| templates/[doctorviewer.html](xxxxxxxxxxxxxxxxx)           |   HTML that uses AJAX to link to the server and provide a user interface for doctors database                                                                                   |
-| templates/[login.html](xxxxxxxxxxxxxxxxxxxxxxx)  |   HTML that contains login form  |
+| templates/[doctorviewer.html](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/templates/doctorviewer.html)           |   HTML that uses AJAX to link to the server and provide a user interface for doctors database                                                                                   |
+| templates/[login.html](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/templates/login.html)  |   HTML that contains the login form  |
 | requirements.txt              |   List of necessary packages                                                                           |
 
-#### :mega:  My web server is hosted on :computer: [PythonAnywhere](http://npradaschnor.pythonanywhere.com/)
+### :mega:  My web server is hosted on :computer: [PythonAnywhere](http://npradaschnor.pythonanywhere.com/)
+
+### Login details
+
+| |User1|User2|
+|:----:|:----:|:----:|
+|username| AndrewBeatty1 | dataRep2020  |
+|password| dataStudent   | GMIT2020  |
+
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 

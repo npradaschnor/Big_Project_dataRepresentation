@@ -6,20 +6,18 @@
 
     <!-------------------------CSS------------------------------------------------------>
     <style>
-        body {
-            font-family: "Open Sans", sans-serif;
-            color: #444444;
-        }
-        
-        a {
-            color: #1977cc;
-        }
-        
-        a:hover {
+        #logout-button {
             color: #3291e6;
+            font-size: 16px;
+            border: none;
+            margin-left: 1250px;
+            background-color: white;
             text-decoration: none;
-            transition: all 0.5s;
-            cursor: pointer;
+        }
+        
+        body {
+            font-family: "Raleway", sans-serif;
+            color: #444444;
         }
         
         #getStarted {
@@ -88,6 +86,9 @@
 </head>
 
 <body>
+    <div id="top-button">
+        <button class="btn" id="logout-button"><a href="/logout"><i class="fa fa-sign-out" style="font-size:25px"></i>Logout</a></button>
+    </div>
 
     <section id="getStarted" class="d-flex align-items-center">
         <div class="container">

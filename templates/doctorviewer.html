@@ -16,11 +16,26 @@
         /*Log out button on top of the page*/
         
         #logout-button {
-            top: 20px;
+            margin-top: -65px;
             cursor: pointer;
-            font-size: 25px;
+            color: rgb(3, 32, 63);
+            font-size: 16px;
             border: none;
             margin-left: 1200px;
+        }
+        
+        #home-button {
+            background-color: dodgerblue;
+            border: none;
+            color: white;
+            margin-left: 30px;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        #home-button:hover {
+            background-color: rgb(3, 32, 63);
         }
         
         h1 {
@@ -40,10 +55,6 @@
             height: 900px;
             background-color: #FFFFFF;
             font-family: "Raleway", sans-serif;
-        }
-        
-        a {
-            color: #1977cc;
         }
         
         a:hover {
@@ -89,17 +100,16 @@
         #patientsDB-button {
             font-family: "Raleway", sans-serif;
             font-weight: 500;
-            font-size: 18px;
+            font-size: 14px;
             letter-spacing: 1px;
             padding: 10px 30px;
             transition: 0.5s;
             color: #fff;
-            background: #5b85fa;
+            background-color: #0b40d1;
             display: inline-block;
             margin-top: 20px;
-            margin-left: 815px;
+            margin-left: 855px;
             border-radius: 15px;
-            border-color: #12069c;
         }
         
         #patientsDB-button:hover {
@@ -230,10 +240,12 @@
 
 
 <body>
-    <!-----------------------------------Logout button----------------------------------------->
+    <!-----------------------------------Top buttons----------------------------------------->
 
-    <div id="logout-button">
-        <button class="btn"><a href="/logout"><i class="fa fa-sign-out" style="font-size:30px"></i>Logout</a></button>
+    <div id="top-buttons">
+        <button class="btn" id="home-button"><a href="/home"><i class="fa fa-home"></i></button></a>
+        </button>
+        <button class="btn" id="logout-button"><a href="/logout"><i class="fa fa-sign-out" style="font-size:25px"></i>Logout</a></button>
     </div>
 
     <!--------------------------Header----------------------------------------------------->
@@ -254,7 +266,7 @@
         <table id="createUpdateForm">
             <tr>
                 <td>Registration Number</td>
-                <td><input type="text" name="reg_no" id="idInput" placeholder="19528"></td>
+                <td><input type="number" name="reg_no" id="idInput" placeholder="19528"></td>
             </tr>
             <tr>
                 <td>First Name</td>

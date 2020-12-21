@@ -10,12 +10,12 @@ USE datarepresentation;
 
 --Create table 'patients' | Patients Database
 CREATE TABLE patients (
-    -> id CHAR (11) NOT NULL,
-    -> firstName VARCHAR (250),
-    -> lastName VARCHAR (250),
-    -> reasonForVisiting VARCHAR (250)
-    -> PRIMARY KEY(id)
-    -> );
+    id CHAR (11) NOT NULL,
+    firstName VARCHAR (250),
+    lastName VARCHAR (250),
+    reasonForVisiting VARCHAR (250)
+    PRIMARY KEY(id)
+);
 
 -- Check if the table 'patients' was created as expected
 DESC patients;
@@ -38,12 +38,12 @@ INSERT INTO patients VALUES
 --Create table 'doctors' | Doctors Database
 
 CREATE TABLE doctors (
-    -> reg_no int(250) NOT NULL,
-    -> firstName varchar(250) NOT NULL,
-    -> lastName varchar(250) NOT NULL,
-    -> specialty varchar(250) NOT NULL,
-    -> PRIMARY KEY (reg_no)
-    -> );
+    reg_no int(250) NOT NULL,
+    firstName varchar(250) NOT NULL,
+    lastName varchar(250) NOT NULL,
+    specialty varchar(250) NOT NULL,
+    PRIMARY KEY (reg_no)
+);
 
 -- Check if the table 'doctors' was created as expected
 DESC doctors;
@@ -60,11 +60,11 @@ INSERT INTO doctors VALUES
 
 --Create table 'users' | Login
 CREATE TABLE users (
-    -> id INT (11) NOT NULL AUTO_INCREMENT,
-    -> username VARCHAR (250),
-    -> password VARCHAR (250),
-    -> PRIMARY KEY(id)
-    -> );
+    id INT (11) NOT NULL AUTO_INCREMENT,
+    username VARCHAR (250),
+    password VARCHAR (250),
+    PRIMARY KEY(id)
+);
 
 -- Check if the table 'users' was created as expected
 DESC users;
