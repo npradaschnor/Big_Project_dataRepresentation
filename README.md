@@ -28,7 +28,7 @@
 | requirements.txt              |   List of necessary packages                                                                           |
 
 <br/>
-<a href="https://ibb.co/ds9M766"><img src="https://i.ibb.co/wZHgYCC/big-proj-datarep-arquitecture.png" alt="big-proj-datarep-arquitecture" border="0"></a><br/>
+<a href="https://ibb.co/ds9M766"><img src="https://i.ibb.co/wZHgYCC/big-proj-datarep-arquitecture.png" alt="big-proj-datarep-arquitecture" border="0"></a><br/><br/>
 <a href="https://ibb.co/3Y44PZP"><img src="https://i.ibb.co/cXkksns/big-proj-datarep-data.png" alt="big-proj-datarep-data" border="0"></a><br/>
 
 
@@ -51,7 +51,7 @@
 - [Flask-MySQLdb](https://flask-mysqldb.readthedocs.io/en/latest/)
 - [Python 3.6.3](https://www.python.org/downloads/release/python-363/)
 
-#### Also check the [requirements.txt] (xxxxxx) to see the libraries used and their version.
+#### Also check the [requirements.txt](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/requirements.text) to see the libraries used and their version.
 
 *Note*: Most of the languages/packages were included in the Anaconda programme. However, some of them were called through 'pip' on the command line or downloaded from the internet.
 
