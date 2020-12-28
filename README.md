@@ -32,8 +32,6 @@
 <a href="https://ibb.co/3Y44PZP"><img src="https://i.ibb.co/cXkksns/big-proj-datarep-data.png" alt="big-proj-datarep-data" border="0"></a><br/>
 
 
-### :mega:  My web server is hosted on :computer: [PythonAnywhere](http://npradaschnor.pythonanywhere.com/)
-
 ### Login details
 
 | |User1|User2|
