@@ -49,7 +49,7 @@
 - [Flask-MySQLdb](https://flask-mysqldb.readthedocs.io/en/latest/)
 - [Python 3.6.3](https://www.python.org/downloads/release/python-363/)
 
-#### Also check the [requirements.txt](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/requirements.text) to see the libraries used and their version.
+#### Also check the [requirements.txt](https://github.com/npradaschnor/Big_Project_dataRepresentation/blob/master/requirements.txt) to see the libraries used and their version.
 
 *Note*: Most of the languages/packages were included in the Anaconda programme. However, some of them were called through 'pip' on the command line or downloaded from the internet.
 
